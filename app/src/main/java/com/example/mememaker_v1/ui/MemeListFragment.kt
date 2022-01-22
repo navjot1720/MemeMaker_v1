@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -34,12 +35,11 @@ class MemeListFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val listAdapter = MemeListAdapter(mutableListOf(), ::onMemeClicked)
         val layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
-        binding.rvMemeList.layoutManager = layoutManager
         binding.rvMemeList.addItemDecoration(SpaceItemDecoration(16))
 
-        binding.rvMemeList.adapter = listAdapter
+        /*val listAdapter = MemeListAdapter(mutableListOf(), ::onMemeClicked)
+        binding.rvMemeList.adapter = listAdapter*/
 
 
         binding.btnRefreshMemes.setOnClickListener {
@@ -47,25 +47,27 @@ class MemeListFragment: Fragment() {
         }
 
         viewModel.memeList.observe(viewLifecycleOwner, { list ->
-            listAdapter.data.clear()
+            //TODO - populate meme list
+            /*listAdapter.data.clear()
             listAdapter.data.addAll(list)
-            listAdapter.notifyDataSetChanged()
+            listAdapter.notifyDataSetChanged()*/
         })
 
-        viewModel.refreshBtnClicked.observe(viewLifecycleOwner, { clicked ->
-            if (clicked) {
+        viewModel.refreshBtnClicked.observe(viewLifecycleOwner, {
+            Toast.makeText(requireContext(), "fetching new memes", Toast.LENGTH_SHORT).show()
+            viewModel.fetchMemes()
+            /*if (clicked) {
                 viewModel.fetchMemes()
                 viewModel.refreshEventDone()
-            }
+            }*/
         })
     }
 
     private fun onMemeClicked(meme: Meme) {
-        val bundle = bundleOf("meme_Id" to meme.ID)
+        //TODO - Navigate to MemeDetailsFragment class with selected meme id
         requireActivity().supportFragmentManager.beginTransaction()
             .setReorderingAllowed(true)
-            .addToBackStack("meme_detail")
-            .add(R.id.fragment_container_view, MemeDetailFragment::class.java, bundle)
+            .replace(R.id.fragment_container_view, MemeDetailFragment::class.java, null)
             .commit()
     }
 }

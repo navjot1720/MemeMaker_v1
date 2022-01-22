@@ -9,8 +9,10 @@ import retrofit2.http.Path
 
 interface NetworkService {
 
-    @GET("{page}")
-    suspend fun getMemes(@Path("page") page: Int = 1): MemeResponse
+    //TODO - Write GET method to get meme list from URL - http://alpha-meme-maker.herokuapp.com/1
+    //TODO - Add "page" number in url. default value should be 1
+    /*@GET("{page}")
+    suspend fun getMemes(@Path("page") page: Int = 1): MemeResponse*/
 
     companion object {
         private const val BASE_URL = "http://alpha-meme-maker.herokuapp.com/"

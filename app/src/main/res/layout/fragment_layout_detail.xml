@@ -41,7 +41,6 @@
       android:textColor="#fff"
       android:fontFamily="@font/bangers"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintBottom_toBottomOf="@id/iv_meme_image"/>
+      app:layout_constraintTop_toTopOf="@id/iv_meme_image"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

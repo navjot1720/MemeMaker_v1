@@ -27,18 +27,17 @@ class MemeViewModel: ViewModel() {
     }
 
     fun fetchMemes() {
-        viewModelScope.launch {
-            _memeList.value = dateRepo.getMemeList()
-        }
+        //TODO - Only take memes whose topText is not empty
+        _memeList.value = dateRepo.getMemeList()
     }
 
     fun refreshMemesList() {
         _refreshBtnClicked.value = true
     }
 
-    fun refreshEventDone() {
+    /*fun refreshEventDone() {
         _refreshBtnClicked.value = false
-    }
+    }*/
 
     fun getMeme(id: Int): Meme? {
       return _memeList.value?.toList()?.filter { it.ID == id }?.elementAtOrNull(0)
