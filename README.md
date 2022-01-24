@@ -20,6 +20,6 @@ This app contains 2 screens -
 3. Navigate to MemeDetailsFragment class with selected meme id and show meme in meme details fragment.
 4. Fix crashes if any.
 5. Handle config changes (orientation change) scenarios.
-5. Filter out memes which do not have "topText"
+6. Filter out memes which do not have "topText"
 
 
