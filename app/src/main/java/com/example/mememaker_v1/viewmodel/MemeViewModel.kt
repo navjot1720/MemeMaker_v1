@@ -28,6 +28,7 @@ class MemeViewModel: ViewModel() {
 
     fun fetchMemes() {
         viewModelScope.launch {
+            //TODO - Only take memes whose url is not empty
             _memeList.value = dateRepo.getMemeList()
         }
     }
@@ -36,11 +37,8 @@ class MemeViewModel: ViewModel() {
         _refreshBtnClicked.value = true
     }
 
-    fun refreshEventDone() {
-        _refreshBtnClicked.value = false
-    }
 
-    fun getMeme(id: Int): Meme? {
-      return _memeList.value?.toList()?.filter { it.ID == id }?.elementAtOrNull(0)
+    fun getMemeByUrl(url: String): Meme? {
+        return _memeList.value?.toList()?.filter { it.url.equals(url) }?.elementAtOrNull(0)
     }
 }

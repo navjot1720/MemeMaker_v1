@@ -12,42 +12,12 @@ import androidx.core.graphics.drawable.DrawableCompat
 import com.example.mememaker_v1.util.getRandomColor
 
 
-class MemeListAdapter(var data: MutableList<Meme>, val clickListener: (meme: Meme) -> Unit): RecyclerView.Adapter<MemeViewHolder>() {
+//TODO - Implement RecyclerView adapter "MemeListAdapter"
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemeViewHolder {
-        return   MemeViewHolder.from(parent)
-    }
-
-    override fun onBindViewHolder(holder: MemeViewHolder, position: Int) {
-        holder.bind(data[position], clickListener)
-    }
-
-    override fun getItemCount() = data.size
-
-
-}
 
 class MemeViewHolder(private val itemView: View): RecyclerView.ViewHolder(itemView) {
 
     fun bind(meme: Meme, clickListener: (meme: Meme) -> Unit) {
-
-        val unwrappedDrawable = itemView.background
-        val wrappedDrawable = DrawableCompat.wrap(unwrappedDrawable)
-        DrawableCompat.setTint(wrappedDrawable, getRandomColor())
-
-        val name = itemView.findViewById<TextView>(R.id.tv_name)
-        val thumbnail = itemView.findViewById<ImageView>(R.id.iv_thumbnail)
-        name.text = meme.name.trim()
-        Glide.with(thumbnail)
-            .load(meme.image)
-            .centerCrop()
-            .thumbnail(0.05f)
-            .into(thumbnail)
-
-        itemView.setOnClickListener {
-            clickListener.invoke(meme)
-        }
-
     }
 
     companion object {

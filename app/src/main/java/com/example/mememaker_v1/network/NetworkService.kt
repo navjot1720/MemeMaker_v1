@@ -1,19 +1,17 @@
 package com.example.mememaker_v1.network
 
-import com.example.mememaker_v1.MemeResponse
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
-import retrofit2.http.Path
+
 
 interface NetworkService {
 
-    @GET("{page}")
-    suspend fun getMemes(@Path("page") page: Int = 1): MemeResponse
+    //TODO - Write GET method to get meme list from URL - https://meme-api.herokuapp.com/gimme/
+    //TODO - Add "count" number in url. default value should be 15
 
     companion object {
-        private const val BASE_URL = "http://alpha-meme-maker.herokuapp.com/"
+        private const val BASE_URL = "https://meme-api.herokuapp.com/gimme/"
 
         fun getService(): NetworkService {
             val client = OkHttpClient.Builder()

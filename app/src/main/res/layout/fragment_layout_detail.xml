@@ -11,6 +11,8 @@
       android:layout_width="match_parent"
       android:layout_height="0dp"
       android:background="@color/black"
+      android:layout_margin="4dp"
+      android:scaleType="fitXY"
       app:layout_constraintDimensionRatio="H, 1:1"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
@@ -18,21 +20,21 @@
       app:layout_constraintBottom_toBottomOf="parent"/>
 
   <TextView
-      android:id="@+id/tv_top"
+      android:id="@+id/tv_name"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_margin="4dp"
       android:fontFamily="@font/bangers"
       android:textSize="32sp"
       android:textStyle="bold"
-      android:textColor="#fff"
+      android:text="name"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@id/iv_meme_image"
+      app:layout_constraintTop_toBottomOf="@id/iv_meme_image"
       />
 
   <TextView
-      android:id="@+id/tv_bottom"
+      android:id="@+id/tv_ups"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textSize="32sp"
@@ -40,8 +42,17 @@
       android:layout_margin="4dp"
       android:textColor="#fff"
       android:fontFamily="@font/bangers"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintEnd_toStartOf="@id/tv_name"
       app:layout_constraintBottom_toBottomOf="@id/iv_meme_image"/>
+
+  <TextView
+      android:id="@+id/iv_likes"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="8dp"
+      android:drawableEnd="@drawable/ic_likes"
+      android:fontFamily="@font/bangers"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintBaseline_toBaselineOf="@id/tv_ups"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,10 +10,10 @@ import com.bumptech.glide.Glide
 import com.example.mememaker_v1.viewmodel.MemeViewModel
 import com.example.mememaker_v1.R
 import com.example.mememaker_v1.databinding.FragmentLayoutDetailBinding
+import com.example.mememaker_v1.getDummyMeme
 
 class MemeDetailFragment: Fragment(R.layout.fragment_layout_detail) {
 
-    val viewModel: MemeViewModel by activityViewModels<MemeViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,18 +22,21 @@ class MemeDetailFragment: Fragment(R.layout.fragment_layout_detail) {
     ): View? {
         val binding = FragmentLayoutDetailBinding.inflate(inflater, container, false)
 
-        val memeId = requireArguments().getInt("meme_Id")
-
-        val selectedMeme = viewModel.getMeme(memeId)
+        //TODO - get and show Meme selected in listing screen
+        val selectedMeme = getDummyMeme()
 
         if (selectedMeme != null) {
+            val preivew = if (selectedMeme.preview.size == 1) {
+                0
+            } else {
+                selectedMeme.preview.size - 1
+            }
             Glide.with(binding.ivMemeImage.context)
-                .load(selectedMeme.image)
-                .centerCrop()
+                .load(selectedMeme.preview[preivew])
                 .into(binding.ivMemeImage)
 
-            binding.tvTop.text = selectedMeme.topText ?: "".trim()
-            binding.tvBottom.text = selectedMeme.bottomText ?: "".trim()
+            binding.tvName.text = selectedMeme.title ?: "".trim()
+            binding.tvUps.text = selectedMeme.ups.toString()
         }
 
         return binding.root
