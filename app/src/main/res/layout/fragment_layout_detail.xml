@@ -26,6 +26,7 @@
       android:textSize="32sp"
       android:textStyle="bold"
       android:textColor="#fff"
+      android:text="Top Text"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="@id/iv_meme_image"
@@ -40,6 +41,7 @@
       android:layout_margin="4dp"
       android:textColor="#fff"
       android:fontFamily="@font/bangers"
+      android:text="Bottom Text"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="@id/iv_meme_image"/>
 

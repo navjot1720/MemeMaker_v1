@@ -1,17 +1,25 @@
 # MemeMaker_v1
-Sample app to see memes and laugh
 
-## Implementation Tasks
-1. Implement RecyclerView Adapter fot meme list
-2. Implement GET method to fetch meme list in NetworkService
-3. Get selected meme in MemeDetailFragment from meme id passed
-4. Perform API call on background thread
+This a fun app to see memes and laugh.
+This app contains 2 screens - 
+    1. Meme list screen where we show memes fetch from network. Here we can select any meme by clicking on it.
+    2. Meme detail screen where we can see full meme.
 
 
+- Below tasks are listed in order of priority 
+- Our objective is to get crash free  and bug free app.
+- Please try to follow best and clean code practice.
+- Please make sure to avoid performing any IO operation on UI thread
+- TODO's respective to tasks are also provided in code.
 
-## Bugs
-1. Meme list API is gettng called on config change 
-2. Pressing back on MemeDetailFragment closes the application, it should return to list fragment
-3. Crash issues when setting memes in list.
-4. layout issue in fragment_detail_layout
+
+
+## Tasks
+1. Implement RecyclerView Adapter and show memes in MemeListFragment.
+2. Implement GET method to fetch meme list in NetworkService.
+3. Navigate to MemeDetailsFragment class with selected meme id and show meme in meme details fragment.
+4. Fix crashes if any.
+5. Handle config changes (orientation change) scenarios.
+5. Filter out memes which do not have "topText"
+
 

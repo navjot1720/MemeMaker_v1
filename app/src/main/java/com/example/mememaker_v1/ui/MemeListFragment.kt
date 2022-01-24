@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.mememaker_v1.Meme
-import com.example.mememaker_v1.MemeListAdapter
 import com.example.mememaker_v1.viewmodel.MemeViewModel
 import com.example.mememaker_v1.R
 import com.example.mememaker_v1.databinding.FragmentMemeListBinding
@@ -38,9 +37,6 @@ class MemeListFragment: Fragment() {
         val layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
         binding.rvMemeList.addItemDecoration(SpaceItemDecoration(16))
 
-        /*val listAdapter = MemeListAdapter(mutableListOf(), ::onMemeClicked)
-        binding.rvMemeList.adapter = listAdapter*/
-
 
         binding.btnRefreshMemes.setOnClickListener {
             viewModel.refreshMemesList()
@@ -48,18 +44,11 @@ class MemeListFragment: Fragment() {
 
         viewModel.memeList.observe(viewLifecycleOwner, { list ->
             //TODO - populate meme list
-            /*listAdapter.data.clear()
-            listAdapter.data.addAll(list)
-            listAdapter.notifyDataSetChanged()*/
         })
 
         viewModel.refreshBtnClicked.observe(viewLifecycleOwner, {
             Toast.makeText(requireContext(), "fetching new memes", Toast.LENGTH_SHORT).show()
             viewModel.fetchMemes()
-            /*if (clicked) {
-                viewModel.fetchMemes()
-                viewModel.refreshEventDone()
-            }*/
         })
     }
 

@@ -11,8 +11,8 @@ import kotlinx.coroutines.launch
 
 class MemeViewModel: ViewModel() {
 
-    val networkService = NetworkService.getService()
-    val dateRepo = DataRepository(networkService)
+    private val networkService = NetworkService.getService()
+    private val dateRepo = DataRepository(networkService)
 
     private val _refreshBtnClicked = MutableLiveData<Boolean>(false)
     val refreshBtnClicked: LiveData<Boolean>
@@ -34,10 +34,6 @@ class MemeViewModel: ViewModel() {
     fun refreshMemesList() {
         _refreshBtnClicked.value = true
     }
-
-    /*fun refreshEventDone() {
-        _refreshBtnClicked.value = false
-    }*/
 
     fun getMeme(id: Int): Meme? {
       return _memeList.value?.toList()?.filter { it.ID == id }?.elementAtOrNull(0)
